@@ -109,7 +109,7 @@ td b{white-space:nowrap}
 .vs li{padding:6px 0;border-bottom:1px dashed rgba(44,42,51,.15);display:flex;gap:8px}
 .vs li:last-child{border-bottom:none}
 .vs li i{font-style:normal;font-weight:900;flex-shrink:0}
-.old li i{color:var(--clay)} .new li i{color:var(--teal)}
+.old li i{color:#8a8494} .new li i{color:var(--teal)}
 /* ---------- continuous-vs-step chart ---------- */
 .func-wrap{display:grid;grid-template-columns:1.35fr .65fr;gap:16px}
 .vc-col{display:flex;flex-direction:column;gap:14px}
@@ -119,7 +119,7 @@ td b{white-space:nowrap}
 .vc li{padding:6px 0;border-bottom:1px dashed rgba(44,42,51,.15);display:flex;gap:8px}
 .vc li:last-child{border-bottom:none}
 .vc li i{font-style:normal;font-weight:900;flex-shrink:0}
-.vc.old{background:var(--sand)} .vc.old li i{color:var(--clay)}
+.vc.old{background:var(--sand)} .vc.old li i{color:#8a8494}
 .vc.new{background:var(--mint);border:2px solid var(--teal)} .vc.new li i{color:var(--teal)}
 /* ---------- principles & pretty tables ---------- */
 .prin{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -130,7 +130,8 @@ td b{white-space:nowrap}
 .band{border-radius:22px;background:linear-gradient(120deg,#2f66c2 0%,#3b82c4 52%,#2a9e85 100%);color:#fff;padding:30px 36px 28px;box-shadow:0 14px 34px -20px rgba(40,90,160,.5)}
 .band .crumb{color:rgba(255,255,255,.82)}
 .band h1{color:#fff}
-.band h1 em{background:none;color:#ffe9a8}
+.band .sub{font-size:19px;font-weight:800;color:#ffe9a8;margin:4px 0 6px}
+.band .sub em{font-style:normal}
 .band .lede{color:rgba(255,255,255,.88)}
 .bchip{display:inline-flex;align-items:center;gap:7px;font-size:11.5px;font-weight:800;padding:5px 13px;border-radius:99px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff}
 .bchip i{width:7px;height:7px;border-radius:50%;background:#9df0cf}
@@ -165,7 +166,7 @@ th.newc{background:rgba(79,196,154,.14)}
 .phase small{color:#6f6a7a;line-height:1.55;display:block}
 .phase .p0{background:var(--sky)} .phase .p4{background:var(--peach)}
 /* ---------- callout / ask ---------- */
-.callout{border-radius:18px;padding:22px 24px;background:linear-gradient(120deg,#fbf3d3,#fdeadb);border:1px solid #ecd9a8;display:flex;gap:16px;align-items:flex-start}
+.callout{border-radius:18px;padding:22px 24px;background:#fff;border:1px solid var(--line);display:flex;gap:16px;align-items:flex-start}
 .callout .mark{width:34px;height:34px;border-radius:10px;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;flex-shrink:0}
 .callout p{font-size:14px}
 .ask li{margin:8px 0;font-size:13.5px}
@@ -181,10 +182,10 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
     <nav>
       <a class="on" href="#overview" style="--c:#3b82c4"><span class="nic">◆</span><span class="nlb">总览</span></a>
       <a href="#baseline" style="--c:#3b82c4"><span class="nic">☰</span><span class="nlb">现行规则</span><span class="no2">01</span></a>
-      <a href="#causes" style="--c:#d97f4e"><span class="nic">⚠</span><span class="nlb">现象与原因</span><span class="no2">02</span></a>
+      <a href="#causes" style="--c:#3b82c4"><span class="nic">⚠</span><span class="nlb">现象与原因</span><span class="no2">02</span></a>
       <a href="#goal" style="--c:#2a9e85"><span class="nic">◎</span><span class="nlb">修订目标</span><span class="no2">03</span></a>
-      <a href="#factors" style="--c:#e3a52f"><span class="nic">✚</span><span class="nlb">新增因素</span><span class="no2">04</span></a>
-      <a href="#climb" style="--c:#d97f4e"><span class="nic">⛰</span><span class="nlb">爬升替代山路</span><span class="no2">05</span></a>
+      <a href="#factors" style="--c:#3b82c4"><span class="nic">✚</span><span class="nlb">新增因素</span><span class="no2">04</span></a>
+      <a href="#climb" style="--c:#2a9e85"><span class="nic">⛰</span><span class="nlb">爬升替代山路</span><span class="no2">05</span></a>
       <a href="#func" style="--c:#3b82c4"><span class="nic">ƒ</span><span class="nlb">连续函数</span><span class="no2">06</span></a>
       <a href="#method" style="--c:#2a9e85"><span class="nic">Σ</span><span class="nlb">测算与回放</span><span class="no2">07</span></a>
       <a href="#steps" style="--c:#3b82c4"><span class="nic">▶</span><span class="nlb">推进与决策</span><span class="no2">08</span></a>
@@ -194,8 +195,9 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
 
   <main class="main" id="overview">
     <div class="band">
-      <div class="crumb"><span>车队管理 · 规则修订方向汇报</span><span class="bchip"><i></i>方向汇报 · 非定稿参数</span></div>
-      <h1>削峰填谷，<br><em>让奖罚回到驾驶行为。</em></h1>
+      <div class="crumb"><span>车队管理 · 规则修订</span><span class="bchip"><i></i>方向汇报 · 非定稿参数</span></div>
+      <h1>车队油耗规则修订方向汇报</h1>
+      <p class="sub">削峰填谷，<em>让奖罚回到驾驶行为。</em></p>
       <p class="lede" style="max-width:56em">现行油耗规则下，部分车型 / 线路的司机长期亏油，另一部分长期节油拿奖励——差异来自车与线路，而不是司机。本次汇报修订方向：新增哪些考虑因素、规则形式怎么改、如何测算。</p>
       <div class="hstats">
         <div class="hstat"><small>现行调整项</small><b>15<span> 项</span></b><div>基础标准之外 · 全为固定阶梯值</div></div>
@@ -214,15 +216,15 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
         <tr><td><b class="cat" style="--tc:#3b82c4">基础标准</b></td><td>9.6 米箱车 19 L ｜ 4×2 油车 24.5 L ｜ 燃气车 25 kg（每百公里）</td></tr>
         <tr><td><b class="cat" style="--tc:#3b82c4">车型</b></td><td>6×2 +2 ｜ 6×4 +3 ｜ 210 方挂厢 +4.5 ｜ 240 方挂厢 +6.5 ｜ 德国曼 / 小马力各 +0.5</td></tr>
         <tr><td><b class="cat" style="--tc:#2a9e85">里程</b></td><td>国产 100 万公里以上 +0.5 ｜ 进口 130 万公里以上 +0.5</td></tr>
-        <tr><td><b class="cat" style="--tc:#d97f4e">载重</b></td><td>重货：小挂 15 吨以上、大挂 19 吨以上，每吨 +0.2 / +0.3（云贵川渝额外）；轻货按吨递减，空车小挂 −2 / 大挂 −1.5</td></tr>
-        <tr><td><b class="cat" style="--tc:#d97f4e">线路</b></td><td>山路每 50 km +1 / +1.5（云贵川渝互跑翻倍）｜ 底道 +4 / +8.5 ｜ 短线 +0.5~1.5 ｜ 特殊线路、中途换挂</td></tr>
-        <tr><td><b class="cat" style="--tc:#e3a52f">气候 / 时效</b></td><td>冬季 −10℃ +1、−15℃ +2（大挂 ×1.5）｜ 时效线路 +0.6~1</td></tr>
+        <tr><td><b class="cat" style="--tc:#3b82c4">载重</b></td><td>重货：小挂 15 吨以上、大挂 19 吨以上，每吨 +0.2 / +0.3（云贵川渝额外）；轻货按吨递减，空车小挂 −2 / 大挂 −1.5</td></tr>
+        <tr><td><b class="cat" style="--tc:#2a9e85">线路</b></td><td>山路每 50 km +1 / +1.5（云贵川渝互跑翻倍）｜ 底道 +4 / +8.5 ｜ 短线 +0.5~1.5 ｜ 特殊线路、中途换挂</td></tr>
+        <tr><td><b class="cat" style="--tc:#2a9e85">气候 / 时效</b></td><td>冬季 −10℃ +1、−15℃ +2（大挂 ×1.5）｜ 时效线路 +0.6~1</td></tr>
       </tbody></table></div>
 
     </div>
     <!-- ============ CAUSES ============ -->
-    <div class="zone" style="--zc:var(--clay);--zb:#fbf1e9">
-    <div class="sec-head" id="causes"><div class="sh-left"><div class="sh-num" style="background:var(--clay)">02</div><div><div class="eyebrow" style="color:var(--clay)">WHY IT'S UNFAIR</div><h2 class="sec">同一规则，为何有人月月亏、<br>有人月月拿奖？</h2></div></div><p class="lead" style="max-width:24em">三个结构性原因，让奖罚没能真实反映驾驶水平。</p></div>
+    <div class="zone" style="--zc:var(--blue);--zb:#eef4fb">
+    <div class="sec-head" id="causes"><div class="sh-left"><div class="sh-num" style="background:var(--blue)">02</div><div><div class="eyebrow" style="color:var(--blue)">WHY IT'S UNFAIR</div><h2 class="sec">同一规则，为何有人月月亏、<br>有人月月拿奖？</h2></div></div><p class="lead" style="max-width:24em">三个结构性原因，让奖罚没能真实反映驾驶水平。</p></div>
     <div class="g3">
       <div class="cause ca"><div class="n">原因 01</div><h3>因素相互混杂</h3><p>燃气车几乎都是新车 + 210 方；德国曼都是 7 年以上老车；山路与云贵川渝、长线强相关。按单一维度切片、逐项微调，会重复计量或互相抵消。</p></div>
       <div class="cause cb"><div class="n">原因 02</div><h3>结构与行为未分开</h3><p>“某类车月均节油 300 升”里，既有标准定高的成分，也有这批司机开得好的成分。不拆开，就可能把行为差异当成规则偏差去补。</p></div>
@@ -247,7 +249,7 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
           <div class="srow"><span class="tag2">均值</span><div class="bar"><i style="--w:67%;background:#e3a52f"></i></div><b>+0.30 → +0.20</b></div>
           <div class="srow"><span class="tag2">标准差 σ</span><div class="bar"><i style="--w:59%;background:#35ad83"></i></div><b>0.85 → 0.50</b></div>
           <div class="srow"><span class="tag2">P10–P90 宽</span><div class="bar"><i style="--w:59%;background:#3b82c4"></i></div><b>2.18 → 1.28</b></div>
-          <div class="srow"><span class="tag2">长期亏油车占比</span><div class="bar"><i style="--w:39%;background:#d97f4e"></i></div><b>17.6% → 6.8%</b></div>
+          <div class="srow"><span class="tag2">长期亏油车占比</span><div class="bar"><i style="--w:39%;background:#93a3bb"></i></div><b>17.6% → 6.8%</b></div>
         </div>
         <p class="chart-note">单位：升 / 百公里（占比除外）。条长为修订后相对现行值的剩余比例；“长期亏油”指连续 ≥6 个月同向亏油。目标示意，以回放为准。</p>
       </div>
@@ -255,20 +257,20 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
     <div class="g4" style="margin-top:20px">
       <div class="panel" style="background:var(--lav);border:none"><div class="eyebrow">指标 ①</div><h3 style="margin:8px 0 6px">离散度收窄</h3><p class="lead">车-月节亏油标准差、P10–P90 区间宽度同时收窄，同方向看两个口径防止误读。</p></div>
       <div class="panel" style="background:var(--mint);border:none"><div class="eyebrow" style="color:#2f8a75">指标 ②</div><h3 style="margin:8px 0 6px">组间差异趋零</h3><p class="lead">按车型 / 荷载 / 燃料 / 里程段 / 坡度分组的平均节亏油极差趋近零。</p></div>
-      <div class="panel" style="background:var(--sand);border:none"><div class="eyebrow" style="color:#b06a3e">指标 ③</div><h3 style="margin:8px 0 6px">持续偏差下降</h3><p class="lead">连续 ≥6 个月同向亏油（或节油）的车辆占比下降——“月月亏”的车应该变少。</p></div>
+      <div class="panel" style="background:var(--sky);border:none"><div class="eyebrow" style="color:#3b82c4">指标 ③</div><h3 style="margin:8px 0 6px">持续偏差下降</h3><p class="lead">连续 ≥6 个月同向亏油（或节油）的车辆占比下降——“月月亏”的车应该变少。</p></div>
       <div class="panel" style="background:var(--peach);border:none"><div class="eyebrow" style="color:#b07f2a">指标 ④</div><h3 style="margin:8px 0 6px">总预算区间内</h3><p class="lead">总节油量 / 节油金额控制在设定区间；均值目标由管理层给定（如司机等权 +0.2）。</p></div>
     </div>
     <div class="prin" style="margin-top:16px">
       <div style="border-left:4px solid var(--blue)"><b>原则 ① · 只补司机控制不了的因素</b><p>车辆、线路、载重、气候可以补；怠速、超速、均速等行为不补偿——那是奖罚要作用的对象。</p></div>
-      <div style="border-left:4px solid var(--amber)"><b>原则 ② · 公平与总水平分开定</b><p>调整项管相对公平，基础标准管总水平；两件事分开校准，互不干扰。</p></div>
+      <div style="border-left:4px solid var(--teal)"><b>原则 ② · 公平与总水平分开定</b><p>调整项管相对公平，基础标准管总水平；两件事分开校准，互不干扰。</p></div>
       <div style="border-left:4px solid var(--teal)"><b>原则 ③ · 任何改动先回放再上线</b><p>候选方案先在历史数据上重算每位司机的月节亏油，看指标变化，再决定。</p></div>
     </div>
     <div class="callout" style="margin-top:16px;align-items:center"><div class="mark" style="background:var(--blue)">μ</div><p><b>均值是管理决策，不是测算结果。</b>多发奖金不等于更公平——本方案把离散度当主指标，平均节油水平（如司机等权 +0.2 升/百公里）由基础标准单独校准、由管理层按预算决策。两件事分开定。</p></div>
 
     </div>
     <!-- ============ FACTORS ============ -->
-    <div class="zone" style="--zc:var(--amber);--zb:#fdf6e7">
-    <div class="sec-head" id="factors"><div class="sh-left"><div class="sh-num" style="background:var(--amber)">04</div><div><div class="eyebrow" style="color:var(--amber)">NEW FACTORS</div><h2 class="sec">拟新增考虑的因素（8 项）</h2></div></div><p class="lead" style="max-width:24em">均为司机不可控因素；是否纳入、补多少，由测算结果决定。</p></div>
+    <div class="zone" style="--zc:var(--blue);--zb:#eef4fb">
+    <div class="sec-head" id="factors"><div class="sh-left"><div class="sh-num" style="background:var(--blue)">04</div><div><div class="eyebrow" style="color:var(--blue)">NEW FACTORS</div><h2 class="sec">拟新增考虑的因素（8 项）</h2></div></div><p class="lead" style="max-width:24em">均为司机不可控因素；是否纳入、补多少，由测算结果决定。</p></div>
     <div class="fgrid">
       <div class="f"><div class="no">01</div><h3>高温 / 空调</h3><p>驾驶室 + 卧铺空调，长途可达 1–2 L/百公里。</p><span class="src">明细已有平均气温 · 现只补低温</span></div>
       <div class="f"><div class="no">02</div><h3>风</h3><p>西北、华北大风区顶风油耗可升 10% 以上。</p><span class="src">气象按线路时段匹配 · 未考虑</span></div>
@@ -282,19 +284,19 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
 
     </div>
     <!-- ============ CLIMB ============ -->
-    <div class="zone" style="--zc:var(--clay);--zb:#fbf1e9">
-    <div class="sec-head" id="climb"><div class="sh-left"><div class="sh-num" style="background:var(--clay)">05</div><div><div class="eyebrow" style="color:var(--clay)">CLIMB VS MOUNTAIN</div><h2 class="sec">为什么是「累计爬升」，<br>而不是「山路」？</h2></div></div><p class="lead" style="max-width:24em">山路按里程二值判定：丘陵漏补、河谷平路多补、对方向不敏感。累计爬升连续计量，用数据对比后二选一。</p></div>
+    <div class="zone" style="--zc:var(--teal);--zb:#edf7f3">
+    <div class="sec-head" id="climb"><div class="sh-left"><div class="sh-num" style="background:var(--teal)">05</div><div><div class="eyebrow" style="color:var(--teal)">CLIMB VS MOUNTAIN</div><h2 class="sec">为什么是「累计爬升」，<br>而不是「山路」？</h2></div></div><p class="lead" style="max-width:24em">山路按里程二值判定：丘陵漏补、河谷平路多补、对方向不敏感。累计爬升连续计量，用数据对比后二选一。</p></div>
     <div class="tbl-wrap"><table>
       <thead><tr><th>维度</th><th>山路（现行）</th><th class="newc">累计爬升（拟加）</th></tr></thead>
       <tbody>
-        <tr><td><b class="cat" style="--tc:#d97f4e">量什么</b></td><td>被划为“纯山路”的里程，每 50 km 补固定量</td><td class="newc"><span class="hl">全程所有上坡高差之和（米）</span></td></tr>
-        <tr><td><b class="cat" style="--tc:#d97f4e">机理</b></td><td>间接代理：山路 ≈ 有坡 + 弯多</td><td class="newc"><span class="hl">直接因果：40 吨车每爬 1,000 m 约多烧 20–30 L</span></td></tr>
-        <tr><td><b class="cat" style="--tc:#d97f4e">丘陵</b></td><td>不算山路，一分不补</td><td class="newc">起伏全部计入</td></tr>
-        <tr><td><b class="cat" style="--tc:#d97f4e">山区平路</b></td><td>河谷平路也按山路补</td><td class="newc">平路爬升为零，不补</td></tr>
-        <tr><td><b class="cat" style="--tc:#d97f4e">方向</b></td><td>去程回程补一样</td><td class="newc">净上升方向补多，净下降方向补少</td></tr>
-        <tr><td><b class="cat" style="--tc:#d97f4e">与载重</b></td><td>与重货各算各的、简单相加</td><td class="newc">耗油与重量成正比，可乘载重系数</td></tr>
+        <tr><td><b class="cat" style="--tc:#2a9e85">量什么</b></td><td>被划为“纯山路”的里程，每 50 km 补固定量</td><td class="newc"><span class="hl">全程所有上坡高差之和（米）</span></td></tr>
+        <tr><td><b class="cat" style="--tc:#2a9e85">机理</b></td><td>间接代理：山路 ≈ 有坡 + 弯多</td><td class="newc"><span class="hl">直接因果：40 吨车每爬 1,000 m 约多烧 20–30 L</span></td></tr>
+        <tr><td><b class="cat" style="--tc:#2a9e85">丘陵</b></td><td>不算山路，一分不补</td><td class="newc">起伏全部计入</td></tr>
+        <tr><td><b class="cat" style="--tc:#2a9e85">山区平路</b></td><td>河谷平路也按山路补</td><td class="newc">平路爬升为零，不补</td></tr>
+        <tr><td><b class="cat" style="--tc:#2a9e85">方向</b></td><td>去程回程补一样</td><td class="newc">净上升方向补多，净下降方向补少</td></tr>
+        <tr><td><b class="cat" style="--tc:#2a9e85">与载重</b></td><td>与重货各算各的、简单相加</td><td class="newc">耗油与重量成正比，可乘载重系数</td></tr>
       </tbody></table></div>
-    <div class="callout" style="margin-top:16px"><div class="mark" style="background:var(--clay)">✓</div><p><b>已有证据：</b>油车 145 方，山路占比 40% 以下各档百公里节油约 0.5，超 40% 掉到 0.17；210 方超 40% 为 −0.12（亏油）。<b>按公里补没有跟上实际爬坡量。</b>做法：标准路线每条线路只需标定一次，GPS / 导航路径 + 高程逐点累加正高差，规则写成 补油 = k × 每百公里爬升米。</p></div>
+    <div class="callout" style="margin-top:16px"><div class="mark" style="background:var(--teal)">✓</div><p><b>已有证据：</b>油车 145 方，山路占比 40% 以下各档百公里节油约 0.5，超 40% 掉到 0.17；210 方超 40% 为 −0.12（亏油）。<b>按公里补没有跟上实际爬坡量。</b>做法：标准路线每条线路只需标定一次，GPS / 导航路径 + 高程逐点累加正高差，规则写成 补油 = k × 每百公里爬升米。</p></div>
 
     </div>
     <!-- ============ FUNCTION ============ -->
@@ -302,7 +304,7 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
     <div class="sec-head" id="func"><div class="sh-left"><div class="sh-num" style="background:var(--blue)">06</div><div><div class="eyebrow" style="color:var(--blue)">CONTINUOUS FUNCTION</div><h2 class="sec">规则形式：连续函数替代阶梯</h2></div></div><p class="lead" style="max-width:24em">十几个阶梯值 + 多条边界规则 → 每项 1 个起补点 + 1 个斜率。</p></div>
     <div class="func-wrap">
       <div class="panel">
-        <div class="legend"><span><i style="background:#d97f4e"></i>现行 · 每满 50 km 山路 +1 L（小挂）</span><span><i style="background:#1fae7f"></i>拟改 · 补油 ∝ 累计爬升米</span></div>
+        <div class="legend"><span><i style="background:#3b82c4"></i>现行 · 每满 50 km 山路 +1 L（小挂）</span><span><i style="background:#1fae7f"></i>拟改 · 补油 ∝ 累计爬升米</span></div>
         <svg id="stepfn" viewBox="0 0 720 330" style="width:100%;height:auto;display:block;margin-top:4px"></svg>
         <p class="chart-note">以小挂为例：左，现行按线路<b>累计纯山路里程</b>，每满 50 km 补 +1 L/百公里（100 km 补 2 L，云贵川渝互跑翻倍）——不满一档不补、档内 105 与 149 km 同额、过线差 1 km 就跳一档；右，拟改按<b>每百公里累计爬升米</b>连续计量，<b>补油 = k × 爬升米</b>，丘陵与陡坡都按实际爬坡量补、还可乘载重系数。形式示意，k 由回归估计。</p>
       </div>
@@ -417,7 +419,7 @@ function pdf(x,m,s){return Math.exp(-((x-m)*(x-m))/(2*s*s))}
   const xa=v=>L1+v/260*(R1-L1);                    // 0–260 km 累计纯山路
   const xb=v=>L2+v/600*(R2-L2);                    // 0–600 m/100km 累计爬升
   const y=v=>B-(v-Y0)/(Y1-Y0)*(B-T);
-  const RED='#d97f4e',GRN='#1fae7f';
+  const RED='#4e83bd',GRN='#1fae7f';
   // panel captions
   el('text',{x:(L1+R1)/2,y:T-12,'text-anchor':'middle','font-size':12.5,'font-weight':900,fill:RED},svg).textContent='现行 · 按累计纯山路里程阶梯补';
   el('text',{x:(L2+R2)/2,y:T-12,'text-anchor':'middle','font-size':12.5,'font-weight':900,fill:GRN},svg).textContent='拟改 · 按累计爬升连续补';
