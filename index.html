@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>车队油耗规则修订方向汇报 · Watermelon 后台风</title>
+<title>车队油耗规则修订方向汇报</title>
 <style>
 @font-face{font-family:FleetCJK;src:url("font-medium.otf");font-weight:400 600;font-display:swap}
 @font-face{font-family:FleetCJK;src:url("font-bold.otf");font-weight:700 900;font-display:swap}
@@ -210,12 +210,11 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
       <a href="#causes" style="--c:#3b82c4"><span class="nic">⚠</span><span class="nlb">现象与原因</span><span class="no2">02</span></a>
       <a href="#goal" style="--c:#2a9e85"><span class="nic">◎</span><span class="nlb">修订目标</span><span class="no2">03</span></a>
       <a href="#factors" style="--c:#3b82c4"><span class="nic">✚</span><span class="nlb">新增因素</span><span class="no2">04</span></a>
-      <a href="#climb" style="--c:#2a9e85"><span class="nic">⛰</span><span class="nlb">累计爬升</span><span class="no2">05</span></a>
-      <a href="#func" style="--c:#3b82c4"><span class="nic">ƒ</span><span class="nlb">连续函数</span><span class="no2">06</span></a>
-      <a href="#method" style="--c:#2a9e85"><span class="nic">Σ</span><span class="nlb">测算与回放</span><span class="no2">07</span></a>
-      <a href="#steps" style="--c:#3b82c4"><span class="nic">▶</span><span class="nlb">推进与决策</span><span class="no2">08</span></a>
+      <a href="#func" style="--c:#3b82c4"><span class="nic">ƒ</span><span class="nlb">连续函数</span><span class="no2">05</span></a>
+      <a href="#method" style="--c:#2a9e85"><span class="nic">Σ</span><span class="nlb">测算与回放</span><span class="no2">06</span></a>
+      <a href="#steps" style="--c:#3b82c4"><span class="nic">▶</span><span class="nlb">推进与决策</span><span class="no2">07</span></a>
     </nav>
-    <div class="foot">Watermelon UI 风格<br>柔和后台仪表板版<br>2026 年 11 月</div>
+    <div class="foot">汇报人<br>杨佳 · 张宇涛<br>2026 年 11 月</div>
   </aside>
 
   <main class="main" id="overview">
@@ -308,29 +307,13 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
       <div class="f"><div class="no">05</div><h3>新车磨合期</h3><p>前 3–6 个月油耗偏高、之后回落的“新车亏油”现象。</p><span class="src">车辆出厂月份 · 未考虑</span></div>
       <div class="f"><div class="no">06</div><h3>柴油标号</h3><p>冬季 −10 / −20 号柴油热值低 2–4%，叠加在低温之上。</p><span class="src">加油地区 + 月份 · 未考虑</span></div>
       <div class="f"><div class="no">07</div><h3>辅助驾驶</h3><p>数据显示更省油，标准应否相应调整。</p><span class="src">账单表已有标识 · 未考虑</span></div>
-      <div class="f hot"><div class="no">08</div><h3>累计爬升</h3><p>全程所有上坡高差之和，直接对应爬坡耗油；含丘陵与方向不对称。</p><span class="src">导航路径 + 高程数据</span></div>
+      <div class="f hot"><div class="no">08</div><h3>累计爬升</h3><p>全程上坡高差之和（米）。主要补「山路」覆盖不到的平缓坡段——现行山路口径只计入落差大的路段，缓坡起伏漏补。</p><span class="src">导航路径 + 高程数据 · 拟新增</span></div>
     </div>
-
-    </div>
-    <!-- ============ CLIMB ============ -->
-    <div class="zone" style="--zc:var(--teal);--zb:#edf7f3">
-    <div class="sec-head" id="climb"><div class="sh-left"><div class="sh-num" style="background:var(--teal)">05</div><div><div class="eyebrow" style="color:var(--teal)">CLIMB VS MOUNTAIN</div><h2 class="sec">新增「累计爬升」，<br>与山路里程互补。</h2></div></div><p class="lead" style="max-width:24em">山路按里程二值判定：丘陵漏计、河谷平路计入、对方向不敏感。累计爬升按实际爬坡量连续计量，先并行测算、用数据决定怎么用。</p></div>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>维度</th><th>山路（现行）</th><th class="newc">累计爬升（拟加）</th></tr></thead>
-      <tbody>
-        <tr><td><b class="cat" style="--tc:#2a9e85">量什么</b></td><td>被划为“纯山路”的里程，每 50 km 补固定量</td><td class="newc"><span class="hl">全程所有上坡高差之和（米）</span></td></tr>
-        <tr><td><b class="cat" style="--tc:#2a9e85">机理</b></td><td>间接代理：山路 ≈ 有坡 + 弯多</td><td class="newc"><span class="hl">直接因果：40 吨车每爬 1,000 m 约多烧 20–30 L</span></td></tr>
-        <tr><td><b class="cat" style="--tc:#2a9e85">丘陵</b></td><td>不算山路，一分不补</td><td class="newc">起伏全部计入</td></tr>
-        <tr><td><b class="cat" style="--tc:#2a9e85">山区平路</b></td><td>河谷平路也按山路补</td><td class="newc">平路爬升为零，不补</td></tr>
-        <tr><td><b class="cat" style="--tc:#2a9e85">方向</b></td><td>去程回程补一样</td><td class="newc">净上升方向补多，净下降方向补少</td></tr>
-        <tr><td><b class="cat" style="--tc:#2a9e85">与载重</b></td><td>与重货各算各的、简单相加</td><td class="newc">耗油与重量成正比，可乘载重系数</td></tr>
-      </tbody></table></div>
-    <div class="callout" style="margin-top:16px"><div class="mark" style="background:var(--teal)">✓</div><p><b>已有证据：</b>油车 145 方，山路占比 40% 以下各档百公里节油约 0.5，超 40% 掉到 0.17；210 方超 40% 为 −0.12（亏油）。<b>按公里补没有跟上实际爬坡量。</b>做法：标准路线每条线路只需标定一次，GPS / 导航路径 + 高程逐点累加正高差，规则写成 补油 = k × 每百公里爬升米。</p></div>
 
     </div>
     <!-- ============ FUNCTION ============ -->
     <div class="zone" style="--zc:var(--blue);--zb:#eef4fb">
-    <div class="sec-head" id="func"><div class="sh-left"><div class="sh-num" style="background:var(--blue)">06</div><div><div class="eyebrow" style="color:var(--blue)">CONTINUOUS FUNCTION</div><h2 class="sec">规则形式：连续函数替代阶梯</h2></div></div><p class="lead" style="max-width:24em">十几个阶梯值 + 多条边界规则 → 每项 1 个起补点 + 1 个斜率。</p></div>
+    <div class="sec-head" id="func"><div class="sh-left"><div class="sh-num" style="background:var(--blue)">05</div><div><div class="eyebrow" style="color:var(--blue)">CONTINUOUS FUNCTION</div><h2 class="sec">规则形式：连续函数替代阶梯</h2></div></div><p class="lead" style="max-width:24em">十几个阶梯值 + 多条边界规则 → 每项 1 个起补点 + 1 个斜率。</p></div>
     <div class="func-wrap">
       <div class="panel">
         <div class="legend"><span><i style="background:#3b82c4"></i>现行 · 每满 50 km 山路 +1 L（小挂）</span><span><i style="background:#1fae7f"></i>拟加 · 补油 ∝ 累计爬升米</span></div>
@@ -364,7 +347,7 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
         <div class="flow">
           <div class="fcard"><span class="fic">☰</span><div class="ft"><b>1</b>车-月分析宽表</div><p>真实油量只有月度账单，分析粒度定为 车 × 月。油量账单、批次明细、车辆主数据 + 外部气象 / 路网 / 高程，按 车辆 ID × 结算月 关联。</p><div class="fout">产出 · 可信车-月宽表</div></div>
           <div class="farrow">→</div>
-          <div class="fcard"><span class="fic">⚙</span><div class="ft"><b>2</b>多因素回归</div><p>以实际百公里油耗为目标变量，现行全部触发条件 + 拟新增 8 因素 + 行为控制变量放进同一模型，分车型建模并加司机固定效应。系数 vs 现行规则值：更高 = 规则让司机亏油，更低 = 在送奖励。</p><div class="fout">产出 · 系数对照表 = 修订依据</div></div>
+          <div class="fcard"><span class="fic">⚙</span><div class="ft"><b>2</b>多因素回归</div><p>以车-月<b>节亏油</b>（实际油耗 − 政策油量，升/百公里）为目标变量：结构因素 + 拟新增 8 因素放进同一模型，怠速、超速、均速等行为变量只作控制、不进补偿，分车型建模并加司机固定效应。某因素系数 &gt;0 = 现行规则下它让司机亏油、该补；≈0 = 已补到位；&lt;0 = 在送奖励。</p><div class="fout">产出 · 系数对照表 = 修订依据</div></div>
           <div class="farrow">→</div>
           <div class="fcard"><span class="fic">↻</span><div class="ft"><b>3</b>规则仿真回放</div><p>规则参数化做成仿真器：先复现现行政策油量验证理解，再把候选参数放进去，重算近两年每车、每司机的月节亏油。</p><div class="fout">产出 · 新旧方案对照</div></div>
           <div class="farrow">→</div>
@@ -392,7 +375,7 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
     </div>
     <div class="callout" style="margin-top:20px"><div class="mark" style="background:var(--amber)">★</div><p><b>本次汇报只定方向：</b>新增因素清单、连续函数形式、测算方法。具体参数以测算结果为准——任何改动先在历史数据上回放，看指标变化，再决定上线。</p></div>
 
-    <footer><span>FLEET / POLICY LAB</span><span>Watermelon UI 风格 · 2026-11</span></footer>
+    <footer><span>FLEET / POLICY LAB</span><span>汇报人：杨佳 张宇涛 ｜ 11.06</span></footer>
   </main>
 </div>
 
