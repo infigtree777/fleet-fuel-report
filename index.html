@@ -147,6 +147,29 @@ td b{white-space:nowrap}
 .step{border-left:4px solid var(--line)}
 .s1{border-left-color:var(--blue)} .s2{border-left-color:var(--blue)} .s3{border-left-color:var(--blue)}
 .callout{border-left:5px solid var(--amber)}
+/* ---------- header-bar card zones（07/08） ---------- */
+.vzone{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:#f4f6f9;margin-top:24px}
+.vhead{display:flex;align-items:center;gap:12px;padding:14px 22px;color:#fff;flex-wrap:wrap}
+.vchip{background:#fff;border-radius:7px;padding:4px 12px;font-size:12px;font-weight:900;white-space:nowrap}
+.vtitle{font-size:17.5px;font-weight:850}
+.vsub{font-size:12px;opacity:.9;margin-left:auto}
+.vbody{padding:18px 22px 20px}
+.flow{display:flex;align-items:stretch;gap:8px}
+.fcard{flex:1;background:#fff;border:1px solid #e3e8f0;border-radius:12px;padding:15px 16px;min-width:0}
+.farrow{align-self:center;color:#8b93a8;font-weight:900;font-size:15px;flex-shrink:0}
+.fic{display:inline-flex;width:28px;height:28px;border-radius:8px;background:#eef2fd;color:#3b62d8;align-items:center;justify-content:center;font-weight:900;font-size:14px;margin-bottom:9px}
+.fic.g{background:#e6f4ee;color:#1f9e7d}
+.ft{font-size:14.5px;font-weight:850;margin-bottom:5px}
+.ft b{color:#3b62d8;margin-right:5px}
+.fcard p{font-size:12px;color:#5f6673;line-height:1.65}
+.fout{border-top:1px dashed #dde3ec;margin-top:9px;padding-top:7px;font-size:11.5px;font-weight:800;color:#3b62d8}
+.quad{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qcard{display:flex;gap:12px;background:#fff;border:1px solid #dfe7e2;border-left:4px solid #2a9e85;border-radius:10px;padding:14px 16px}
+.qcard .fic{flex-shrink:0;margin-bottom:0}
+.qcard b{font-size:14px}
+.qcard p{font-size:12.5px;color:#5f6673;margin-top:4px;line-height:1.65}
+.vfoot{margin-top:14px;background:#e9f4ef;border-radius:10px;padding:11px 16px;font-size:12.5px;color:#3c4a44}
+.vfoot b{color:#1f8a68;margin-right:8px}
 .tbl-wrap tbody tr:nth-child(even){background:#fbfaf3}
 td b.cat{display:inline-flex;align-items:center;gap:8px;white-space:nowrap}
 td b.cat:before{content:"";width:9px;height:9px;border-radius:3px;background:var(--tc,#3b82c4);flex-shrink:0}
@@ -172,7 +195,7 @@ th.newc{background:rgba(79,196,154,.14)}
 .ask li{margin:8px 0;font-size:13.5px}
 .ask{padding-left:18px}
 footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-radius:14px;padding:14px 18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-@media(max-width:1080px){.layout{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;align-items:center;gap:14px;overflow-x:auto}.side nav{flex-direction:row;margin:0}.side .foot{display:none}.main{padding:24px}.hero,.g2,.vs{grid-template-columns:1fr}.kpis,.g4,.fgrid{grid-template-columns:repeat(2,1fr)}.g3,.steps{grid-template-columns:1fr}.phase{flex-direction:column}.phase div{border-right:none;border-bottom:1px solid var(--line)}}
+@media(max-width:1080px){.layout{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;align-items:center;gap:14px;overflow-x:auto}.side nav{flex-direction:row;margin:0}.side .foot{display:none}.main{padding:24px}.hero,.g2,.vs{grid-template-columns:1fr}.kpis,.g4,.fgrid{grid-template-columns:repeat(2,1fr)}.g3,.steps{grid-template-columns:1fr}.flow{flex-direction:column}.farrow{transform:rotate(90deg)}.quad{grid-template-columns:1fr}.phase{flex-direction:column}.phase div{border-right:none;border-bottom:1px solid var(--line)}}
 </style>
 </head>
 <body>
@@ -325,44 +348,43 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
 
     </div>
     <!-- ============ METHOD ============ -->
-    <div class="zone" style="--zc:var(--teal);--zb:#edf7f3">
-    <div class="sec-head" id="method"><div class="sh-left"><div class="sh-num" style="background:var(--teal)">07</div><div><div class="eyebrow" style="color:var(--teal)">HOW TO MEASURE</div><h2 class="sec">一张表、一个模型、一次回放</h2></div></div><p class="lead" style="max-width:24em">所有因素一次性估出来，而不是逐项猜。</p></div>
-    <div class="steps">
-      <div class="step s1"><span class="snum">1</span><h3>车-月分析宽表</h3><p>真实油量只有月度账单，分析粒度定为 车 × 月。油量账单、批次明细、车辆主数据 + 外部气象 / 路网 / 高程，按 车辆 ID × 结算月 关联成一张宽表。</p><p class="chart-note">先决对账：任务油量能否被明细复现、实际油量构成、燃气单位、跨表 ID 一致性。</p></div>
-      <div class="sarrow">↓</div>
-      <div class="step s2"><span class="snum">2</span><h3>多因素回归</h3><p>以实际百公里油耗为目标变量，现行全部触发条件 + 拟新增 8 因素 + 行为控制变量放进同一模型，分车型建模并加司机固定效应。</p><p class="chart-note">系数 vs 现行规则值：系数更高 = 规则让司机亏油；更低 = 规则在送奖励。这张对照表就是修订依据。</p></div>
-      <div class="sarrow">↓</div>
-      <div class="step s3"><span class="snum">3</span><h3>规则仿真回放</h3><p>规则参数化做成仿真器：先复现现行政策油量验证理解，再把候选参数放进去重算近两年每车、每司机的月节亏油。</p><p class="chart-note">输出公平性指标与总预算，方案直接对比；变动最大的名单人工核查。改动前先看结果，不拍脑袋。</p></div>
-    </div>
-
+    <div class="vzone" id="method">
+      <div class="vhead" style="background:linear-gradient(90deg,#3b62d8,#4e82e0)">
+        <span class="vchip" style="color:#3b62d8">测算与仿真</span>
+        <span class="vtitle">从历史账单到候选方案</span>
+        <span class="vsub">所有因素一次性估出来，而不是逐项猜</span>
+      </div>
+      <div class="vbody">
+        <div class="flow">
+          <div class="fcard"><span class="fic">☰</span><div class="ft"><b>1</b>车-月分析宽表</div><p>真实油量只有月度账单，分析粒度定为 车 × 月。油量账单、批次明细、车辆主数据 + 外部气象 / 路网 / 高程，按 车辆 ID × 结算月 关联。</p><div class="fout">产出 · 可信车-月宽表</div></div>
+          <div class="farrow">→</div>
+          <div class="fcard"><span class="fic">⚙</span><div class="ft"><b>2</b>多因素回归</div><p>以实际百公里油耗为目标变量，现行全部触发条件 + 拟新增 8 因素 + 行为控制变量放进同一模型，分车型建模并加司机固定效应。系数 vs 现行规则值：更高 = 规则让司机亏油，更低 = 在送奖励。</p><div class="fout">产出 · 系数对照表 = 修订依据</div></div>
+          <div class="farrow">→</div>
+          <div class="fcard"><span class="fic">↻</span><div class="ft"><b>3</b>规则仿真回放</div><p>规则参数化做成仿真器：先复现现行政策油量验证理解，再把候选参数放进去，重算近两年每车、每司机的月节亏油。</p><div class="fout">产出 · 新旧方案对照</div></div>
+          <div class="farrow">→</div>
+          <div class="fcard"><span class="fic">⚖</span><div class="ft"><b>4</b>方案比选</div><p>先筛均值达标且总预算在区间内的方案，再比离散度、组间差异与持续偏差；变动最大的名单人工核查，不拍脑袋。</p><div class="fout">产出 · 影响与取舍清单</div></div>
+        </div>
+        <p class="chart-note" style="margin-top:12px">先决对账：任务油量能否被明细复现、实际油量构成、燃气单位、跨表 ID 一致性。</p>
+      </div>
     </div>
     <!-- ============ STEPS ============ -->
-    <div class="zone" style="--zc:var(--blue);--zb:#eef4fb">
-    <div class="sec-head" id="steps"><div class="sh-left"><div class="sh-num" style="background:var(--blue)">08</div><div><div class="eyebrow" style="color:var(--blue)">NEXT STEPS</div><h2 class="sec">推进步骤与需要的决策</h2></div></div><p class="lead" style="max-width:24em">阶段 0 与阶段 3 的“复现现行规则”可立即并行启动，不依赖新增外部数据。</p></div>
-    <div class="phase">
-      <div class="p0"><b>0 · 数据对账</b><small>账单与明细按车-月对平；确认油量构成、燃气单位、状态口径 → 对账报告</small></div>
-      <div><b>1 · 车-月宽表</b><small>政策分解、暴露量、行为、司机、外部因素汇总 → 宽表 + 脚本</small></div>
-      <div><b>2 · 多因素回归</b><small>各因素系数 vs 现行规则值 → 规则对照表</small></div>
-      <div><b>3 · 仿真回放</b><small>复现现行政策油量；回放候选方案 → 比选报告</small></div>
-      <div class="p4"><b>4 · 定稿与监控</b><small>规则文本、参数表、过渡安排；按月复核指标 → 规则定稿</small></div>
+    <div class="vzone" id="steps">
+      <div class="vhead" style="background:linear-gradient(90deg,#1f9e7d,#2ab394)">
+        <span class="vchip" style="color:#1f9e7d">推进安排</span>
+        <span class="vtitle">先对账、补数据，再仿真比选</span>
+        <span class="vsub">阶段 0 与阶段 3 的「复现现行规则」可立即并行启动，不依赖新增外部数据</span>
+      </div>
+      <div class="vbody">
+        <div class="quad">
+          <div class="qcard"><span class="fic g">▶</span><div><b>立即开展</b><p>数据对账与现行规则复现并行启动：先确认任务油量能否被明细复现、油量构成、燃气单位、状态口径可靠。</p></div></div>
+          <div class="qcard"><span class="fic g">✚</span><div><b>补充数据</b><p>油量账单表 202501–202610 全量（车×月）、批次明细同期全量（4 段 SQL 已有）、车辆主数据、规则映射、外部气象 / 路网 / 高程渠道。</p></div></div>
+          <div class="qcard"><span class="fic g">↻</span><div><b>仿真比选</b><p>以现行方案为基线，分别测试参数微调、连续函数与少量新增因素，列出公平性指标与预算差距。</p></div></div>
+          <div class="qcard"><span class="fic g">⚑</span><div><b>需要管理决策</b><p>总预算目标（中位司机月节油水平）、新增因素取舍边界、连续函数起补点与封顶是否沿用、生效时间与过渡期安排。</p></div></div>
+        </div>
+        <div class="vfoot"><b>下一阶段</b>历史回放 → 人工复核 → 确定规则文本、试运行范围和月度监控方式。</div>
+      </div>
     </div>
-    <div class="g2" style="margin-top:20px">
-      <div class="panel"><div class="eyebrow">需要协调的数据</div><ul class="ask" style="margin-top:10px">
-        <li>油量账单表 202501–202610 全量（车 × 月）</li>
-        <li>批次明细同期全量（已有 4 段查询 SQL）</li>
-        <li>车辆主数据：品牌、马力、变速箱、出厂日期、累计里程、辅助驾驶</li>
-        <li>规则编号 → 条件 / 公式 / 生效期映射</li>
-        <li>外部数据渠道：气象、路网、高程</li>
-      </ul></div>
-      <div class="panel" style="background:linear-gradient(140deg,#e8f1f9,#fdeadb)"><div class="eyebrow" style="color:var(--clay)">需要的管理决策</div><ul class="ask" style="margin-top:10px">
-        <li><b>总预算目标：</b>中位司机月节油落在什么水平</li>
-        <li><b>新增因素取舍边界：</b>数据支持但金额很小的项目是否纳入</li>
-        <li><b>连续函数起补点与封顶</b>是否沿用现行边界</li>
-        <li><b>新规则生效时间与过渡期</b>安排</li>
-      </ul></div>
-    </div>
-    <div class="callout" style="margin-top:20px"><div class="mark" style="background:var(--blue)">★</div><p><b>本次汇报只定方向：</b>新增因素清单、连续函数形式、测算方法。具体参数以测算结果为准——任何改动先在历史数据上回放，看指标变化，再决定上线。</p></div>
-    </div>
+    <div class="callout" style="margin-top:20px"><div class="mark" style="background:var(--amber)">★</div><p><b>本次汇报只定方向：</b>新增因素清单、连续函数形式、测算方法。具体参数以测算结果为准——任何改动先在历史数据上回放，看指标变化，再决定上线。</p></div>
 
     <footer><span>FLEET / POLICY LAB</span><span>Watermelon UI 风格 · 2026-11</span></footer>
   </main>
