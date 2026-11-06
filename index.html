@@ -66,12 +66,11 @@ p.lead{font-size:13.5px;color:var(--muted)}
 .stat-rows{display:flex;flex-direction:column;gap:12px;margin-top:18px}
 .srow{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,.7);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
 .srow .tag2{min-width:86px;font-size:11px;font-weight:850;letter-spacing:.08em;color:#5f5a6b}
-.srow .bar{flex:1;height:10px;border-radius:99px;background:#eeece4;position:relative;overflow:hidden}
-.srow .bar i{position:absolute;inset:0;width:var(--w);border-radius:99px}
-.srow b{font-size:14px;min-width:110px;text-align:right}
-.srow .delta{font-size:11px;font-weight:850;padding:3px 9px;border-radius:99px;min-width:60px;text-align:center}
-.srow .delta.down{background:#e2f4ec;color:#1f7a5c}
-.srow .delta.flat{background:#fdf1d7;color:#b07f2a}
+.srow .bars{flex:1;display:flex;flex-direction:column;gap:4px}
+.srow .bars i{display:block;height:7px;border-radius:99px;width:var(--w)}
+.srow .bars i.old{background:#d6d2c6}
+.srow b{font-size:13.5px;min-width:110px;text-align:right}
+.srow .lb{display:flex;gap:14px;min-width:86px}
 /* ---------- grids ---------- */
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -264,20 +263,24 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
     <div class="sec-head" id="goal"><div class="sh-left"><div class="sh-num" style="background:var(--teal)">03</div><div><div class="eyebrow" style="color:var(--teal)">REVISION GOAL</div><h2 class="sec">目标：方差收窄，<br>均值尽量保持原水平。</h2></div></div><p class="lead" style="max-width:24em">削峰填谷 = 让奖罚回到驾驶行为。量化表达：司机节亏油的离散度明显收窄，平均水平与总预算基本不变。</p></div>
     <div class="hero">
       <div class="panel">
-        <div class="legend"><span><i style="background:#7c9bd6"></i>现行规则</span><span><i style="background:#35ad83"></i>修订目标</span><span><i style="background:#e3a52f;border-radius:50%"></i>均值 0.3 → 0.2</span></div>
+        <div class="legend"><span><i style="background:#7c9bd6"></i>现行规则 σ 0.85</span><span><i style="background:#35ad83"></i>修订目标 σ 0.50</span><span><i style="background:#e3a52f;border-radius:50%"></i>均值 0.3 → 0.2</span></div>
         <svg id="dist" viewBox="0 0 720 330" style="width:100%;height:auto;display:block;margin-top:6px"></svg>
         <p class="chart-note">司机节亏油的分布（升 / 百公里，0 左亏右节）：现行规则宽而扁、正负都有；修订目标窄而高、收拢在同一均值附近——<b>方差收窄、均值基本不动</b>。仿真目标示意，以历史回放为准。</p>
       </div>
       <div class="panel" style="background:linear-gradient(160deg,#f2fbf6,#e8f3ff)">
         <div class="eyebrow" style="color:var(--teal)">WHAT CHANGES / WHAT DOESN'T</div>
-        <p class="bigline" style="margin-top:12px">分布<b>收窄约 4 成</b>，<br>均值<em>几乎不动</em>。</p>
+        <p class="bigline" style="margin-top:12px">收窄的是<b>离散度</b>，<br>不动的是<em>均值</em>。</p>
         <div class="stat-rows">
-          <div class="srow"><span class="tag2">均值</span><div class="bar"><i style="--w:67%;background:#e3a52f"></i></div><b>+0.30 → +0.20</b><span class="delta flat">−0.10 持平</span></div>
-          <div class="srow"><span class="tag2">标准差 σ</span><div class="bar"><i style="--w:59%;background:#35ad83"></i></div><b>0.85 → 0.50</b><span class="delta down">−41%</span></div>
-          <div class="srow"><span class="tag2">P10–P90 宽</span><div class="bar"><i style="--w:59%;background:#3b82c4"></i></div><b>2.18 → 1.28</b><span class="delta down">−41%</span></div>
-          <div class="srow"><span class="tag2">长期亏油车占比</span><div class="bar"><i style="--w:39%;background:#93a3bb"></i></div><b>17.6% → 6.8%</b><span class="delta down">−61%</span></div>
+          <div style="display:flex;gap:18px;font-size:11px;font-weight:700;color:#8a8494;padding:0 4px 4px">
+            <span><i style="display:inline-block;width:18px;height:7px;border-radius:99px;background:#d6d2c6;margin-right:6px;vertical-align:1px"></i>现行</span>
+            <span><i style="display:inline-block;width:18px;height:7px;border-radius:99px;background:#35ad83;margin-right:6px;vertical-align:1px"></i>目标（彩条按现行值归一）</span>
+          </div>
+          <div class="srow"><span class="tag2">均值</span><div class="bars"><i class="old" style="--w:100%"></i><i style="--w:67%;background:#e3a52f"></i></div><b>+0.30 → +0.20</b></div>
+          <div class="srow"><span class="tag2">标准差 σ</span><div class="bars"><i class="old" style="--w:100%"></i><i style="--w:59%;background:#35ad83"></i></div><b>0.85 → 0.50</b></div>
+          <div class="srow"><span class="tag2">P10–P90 宽</span><div class="bars"><i class="old" style="--w:100%"></i><i style="--w:59%;background:#3b82c4"></i></div><b>2.18 → 1.28</b></div>
+          <div class="srow"><span class="tag2">长期亏油车占比</span><div class="bars"><i class="old" style="--w:100%"></i><i style="--w:39%;background:#93a3bb"></i></div><b>17.6% → 6.8%</b></div>
         </div>
-        <p class="chart-note">单位：升 / 百公里（占比除外）。条长为修订后相对现行值的剩余比例；“长期亏油”指连续 ≥6 个月同向亏油。目标示意，以回放为准。</p>
+        <p class="chart-note">单位：升 / 百公里（占比除外）。每项灰条为现行值、彩条为修订目标（按现行值归一）；“长期亏油”指连续 ≥6 个月同向亏油。<b>以上仅为大致方向，数值是模拟目标，实际结果以历史回放为准。</b></p>
       </div>
     </div>
     <div class="g4" style="margin-top:20px">
@@ -416,7 +419,9 @@ function pdf(x,m,s){return Math.exp(-((x-m)*(x-m))/(2*s*s))}
   el('path',{d:`M${R} ${B} l-7 -3.5 v7 Z`,fill:'#c9c4b6'},svg);
   el('path',{d:`M${L} ${T} l-3.5 7 h7 Z`,fill:'#c9c4b6'},svg);
   const yl=el('text',{x:0,y:0,'text-anchor':'middle','font-size':10.5,'font-weight':800,fill:'#8a8494',transform:`rotate(-90 ${L-38} ${(T+B)/2})`},svg);yl.setAttribute('x',L-38);yl.setAttribute('y',(T+B)/2);yl.textContent='司机占比（密度）';
-  const zl=el('text',{x:(L+R)/2,y:B+34,'text-anchor':'middle','font-size':10.5,'font-weight':800,fill:'#8a8494'},svg);zl.textContent='月节亏油（升/百公里）· ＜0 亏油 ｜ 0 不亏不节 ｜ ＞0 节油';
+  const zl=el('text',{x:(L+R)/2,y:B+34,'text-anchor':'middle','font-size':10.5,'font-weight':800,fill:'#8a8494'},svg);zl.textContent='月节亏油（升/百公里）';
+  const nl=el('text',{x:L,y:B+34,'text-anchor':'start','font-size':10,fill:'#9a94a3'},svg);nl.textContent='← 亏油';
+  const pl=el('text',{x:R,y:B+34,'text-anchor':'end','font-size':10,fill:'#9a94a3'},svg);pl.textContent='节油 →';
   // P10-P90 bands
   el('path',{d:path(M0,S0,p10a,p90a)+`L${x(p90a)} ${B} L${x(p10a)} ${B} Z`,fill:'rgba(124,155,214,.30)'},svg);
   el('path',{d:path(M1,S1,p10b,p90b)+`L${x(p90b)} ${B} L${x(p10b)} ${B} Z`,fill:'rgba(79,196,154,.40)'},svg);
@@ -428,13 +433,10 @@ function pdf(x,m,s){return Math.exp(-((x-m)*(x-m))/(2*s*s))}
   // mean lines
   [[M0,'#e3a52f'],[M1,'#c98a20']].forEach(([m,c])=>{el('line',{x1:x(m),y1:T+6,x2:x(m),y2:B,stroke:c,'stroke-width':1.8,'stroke-dasharray':'5 4'},svg)});
   const mt=el('text',{x:x(M0)+8,y:T+14,'font-size':11.5,'font-weight':700,fill:'#b07818'},svg);mt.textContent='均值基本持平：+0.30 → +0.20';
-  // sigma labels
-  const s0=el('text',{x:x(1.9),y:y(amp(1.9,M0,S0))-10,'font-size':12,'font-weight':700,fill:'#5a7cb8'},svg);s0.textContent='σ 0.85 · 现行';
-  const s1=el('text',{x:x(1.55),y:y(amp(1.55,M1,S1))-8,'font-size':12,'font-weight':700,fill:'#2f8a6d'},svg);s1.textContent='σ 0.50 · 目标（−41%）';
   // p10/p90 ticks
-  [[p10a,'P10', '#6f92cf'],[p90a,'P90','#6f92cf'],[p10b,'P10','#35ad83'],[p90b,'P90','#35ad83']].forEach(([v,t,c])=>{
+  [[p10a,'P10', '#6f92cf',-12],[p90a,'P90','#6f92cf',-12],[p10b,'P10','#2f8a6d',-26],[p90b,'P90','#2f8a6d',-26]].forEach(([v,t,c,dy])=>{
     el('line',{x1:x(v),y1:B-8,x2:x(v),y2:B+6,stroke:c,'stroke-width':2},svg);
-    const tx=el('text',{x:x(v),y:B+44,'text-anchor':'middle','font-size':10,'font-weight':700,fill:c},svg);tx.textContent=t+' '+v.toFixed(2);
+    const tx=el('text',{x:x(v),y:B+dy,'text-anchor':'middle','font-size':9.5,'font-weight':700,fill:c},svg);tx.textContent=t+' '+v.toFixed(2);
   });
 })();
 /* step vs continuous: mountain-road example.
