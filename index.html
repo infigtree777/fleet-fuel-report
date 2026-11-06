@@ -4,8 +4,8 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>车队油耗规则修订方向汇报</title>
 <style>
-@font-face{font-family:FleetCJK;src:url("font-medium.otf");font-weight:400 600;font-display:swap}
-@font-face{font-family:FleetCJK;src:url("font-bold.otf");font-weight:700 900;font-display:swap}
+@font-face{font-family:FleetCJK;src:url("font-medium.otf");font-weight:400 600;font-display:swap;unicode-range:U+4E00-9FFF,U+3400-4DBF}
+@font-face{font-family:FleetCJK;src:url("font-bold.otf");font-weight:700 900;font-display:swap;unicode-range:U+4E00-9FFF,U+3400-4DBF}
 :root{
   --bg:#f5f4ef; --side:#fbfaf6; --ink:#2c2a33; --muted:#6f6a7a; --line:#e4e1d6;
   --blue:#3b82c4; --teal:#2a9e85; --clay:#d97f4e; --amber:#e3a52f;
@@ -13,7 +13,7 @@
 }
 *{box-sizing:border-box;margin:0}
 html{scroll-behavior:smooth}
-body{font-family:FleetCJK,"PingFang SC","Microsoft YaHei",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
+body{font-family:"PingFang SC","Microsoft YaHei",FleetCJK,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.7}
 a{color:inherit}
 .layout{display:grid;grid-template-columns:236px 1fr;min-height:100vh}
 /* ---------- sidebar ---------- */
