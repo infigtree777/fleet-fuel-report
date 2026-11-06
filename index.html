@@ -69,6 +69,9 @@ p.lead{font-size:13.5px;color:var(--muted)}
 .srow .bar{flex:1;height:10px;border-radius:99px;background:#eeece4;position:relative;overflow:hidden}
 .srow .bar i{position:absolute;inset:0;width:var(--w);border-radius:99px}
 .srow b{font-size:14px;min-width:110px;text-align:right}
+.srow .delta{font-size:11px;font-weight:850;padding:3px 9px;border-radius:99px;min-width:60px;text-align:center}
+.srow .delta.down{background:#e2f4ec;color:#1f7a5c}
+.srow .delta.flat{background:#fdf1d7;color:#b07f2a}
 /* ---------- grids ---------- */
 .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -89,7 +92,7 @@ p.lead{font-size:13.5px;color:var(--muted)}
 .f .src{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;padding:3px 9px;border-radius:99px;background:#f0eee6;color:#6f6a7a}
 .f.hot{background:linear-gradient(150deg,#fdf6e0,#e0f3ec);border:2px solid var(--amber);border-left-width:4px}
 .f.hot .src{background:var(--amber);color:#fff}
-.f.hot:after{content:"拟替代「山路」";position:absolute;top:-11px;right:14px;font-size:10.5px;font-weight:850;background:var(--amber);color:#fff;padding:3px 10px;border-radius:99px;letter-spacing:.06em}
+.f.hot:after{content:"拟新增补充";position:absolute;top:-11px;right:14px;font-size:10.5px;font-weight:850;background:var(--amber);color:#fff;padding:3px 10px;border-radius:99px;letter-spacing:.06em}
 /* ---------- tables ---------- */
 table{width:100%;border-collapse:collapse;font-size:13px}
 th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
@@ -208,7 +211,7 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
       <a href="#causes" style="--c:#3b82c4"><span class="nic">⚠</span><span class="nlb">现象与原因</span><span class="no2">02</span></a>
       <a href="#goal" style="--c:#2a9e85"><span class="nic">◎</span><span class="nlb">修订目标</span><span class="no2">03</span></a>
       <a href="#factors" style="--c:#3b82c4"><span class="nic">✚</span><span class="nlb">新增因素</span><span class="no2">04</span></a>
-      <a href="#climb" style="--c:#2a9e85"><span class="nic">⛰</span><span class="nlb">爬升替代山路</span><span class="no2">05</span></a>
+      <a href="#climb" style="--c:#2a9e85"><span class="nic">⛰</span><span class="nlb">累计爬升</span><span class="no2">05</span></a>
       <a href="#func" style="--c:#3b82c4"><span class="nic">ƒ</span><span class="nlb">连续函数</span><span class="no2">06</span></a>
       <a href="#method" style="--c:#2a9e85"><span class="nic">Σ</span><span class="nlb">测算与回放</span><span class="no2">07</span></a>
       <a href="#steps" style="--c:#3b82c4"><span class="nic">▶</span><span class="nlb">推进与决策</span><span class="no2">08</span></a>
@@ -269,10 +272,10 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
         <div class="eyebrow" style="color:var(--teal)">WHAT CHANGES / WHAT DOESN'T</div>
         <p class="bigline" style="margin-top:12px">分布<b>收窄约 4 成</b>，<br>均值<em>几乎不动</em>。</p>
         <div class="stat-rows">
-          <div class="srow"><span class="tag2">均值</span><div class="bar"><i style="--w:67%;background:#e3a52f"></i></div><b>+0.30 → +0.20</b></div>
-          <div class="srow"><span class="tag2">标准差 σ</span><div class="bar"><i style="--w:59%;background:#35ad83"></i></div><b>0.85 → 0.50</b></div>
-          <div class="srow"><span class="tag2">P10–P90 宽</span><div class="bar"><i style="--w:59%;background:#3b82c4"></i></div><b>2.18 → 1.28</b></div>
-          <div class="srow"><span class="tag2">长期亏油车占比</span><div class="bar"><i style="--w:39%;background:#93a3bb"></i></div><b>17.6% → 6.8%</b></div>
+          <div class="srow"><span class="tag2">均值</span><div class="bar"><i style="--w:67%;background:#e3a52f"></i></div><b>+0.30 → +0.20</b><span class="delta flat">−0.10 持平</span></div>
+          <div class="srow"><span class="tag2">标准差 σ</span><div class="bar"><i style="--w:59%;background:#35ad83"></i></div><b>0.85 → 0.50</b><span class="delta down">−41%</span></div>
+          <div class="srow"><span class="tag2">P10–P90 宽</span><div class="bar"><i style="--w:59%;background:#3b82c4"></i></div><b>2.18 → 1.28</b><span class="delta down">−41%</span></div>
+          <div class="srow"><span class="tag2">长期亏油车占比</span><div class="bar"><i style="--w:39%;background:#93a3bb"></i></div><b>17.6% → 6.8%</b><span class="delta down">−61%</span></div>
         </div>
         <p class="chart-note">单位：升 / 百公里（占比除外）。条长为修订后相对现行值的剩余比例；“长期亏油”指连续 ≥6 个月同向亏油。目标示意，以回放为准。</p>
       </div>
@@ -308,7 +311,7 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
     </div>
     <!-- ============ CLIMB ============ -->
     <div class="zone" style="--zc:var(--teal);--zb:#edf7f3">
-    <div class="sec-head" id="climb"><div class="sh-left"><div class="sh-num" style="background:var(--teal)">05</div><div><div class="eyebrow" style="color:var(--teal)">CLIMB VS MOUNTAIN</div><h2 class="sec">为什么是「累计爬升」，<br>而不是「山路」？</h2></div></div><p class="lead" style="max-width:24em">山路按里程二值判定：丘陵漏补、河谷平路多补、对方向不敏感。累计爬升连续计量，用数据对比后二选一。</p></div>
+    <div class="sec-head" id="climb"><div class="sh-left"><div class="sh-num" style="background:var(--teal)">05</div><div><div class="eyebrow" style="color:var(--teal)">CLIMB VS MOUNTAIN</div><h2 class="sec">新增「累计爬升」，<br>与山路里程互补。</h2></div></div><p class="lead" style="max-width:24em">山路按里程二值判定：丘陵漏计、河谷平路计入、对方向不敏感。累计爬升按实际爬坡量连续计量，先并行测算、用数据决定怎么用。</p></div>
     <div class="tbl-wrap"><table>
       <thead><tr><th>维度</th><th>山路（现行）</th><th class="newc">累计爬升（拟加）</th></tr></thead>
       <tbody>
@@ -327,9 +330,9 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
     <div class="sec-head" id="func"><div class="sh-left"><div class="sh-num" style="background:var(--blue)">06</div><div><div class="eyebrow" style="color:var(--blue)">CONTINUOUS FUNCTION</div><h2 class="sec">规则形式：连续函数替代阶梯</h2></div></div><p class="lead" style="max-width:24em">十几个阶梯值 + 多条边界规则 → 每项 1 个起补点 + 1 个斜率。</p></div>
     <div class="func-wrap">
       <div class="panel">
-        <div class="legend"><span><i style="background:#3b82c4"></i>现行 · 每满 50 km 山路 +1 L（小挂）</span><span><i style="background:#1fae7f"></i>拟改 · 补油 ∝ 累计爬升米</span></div>
+        <div class="legend"><span><i style="background:#3b82c4"></i>现行 · 每满 50 km 山路 +1 L（小挂）</span><span><i style="background:#1fae7f"></i>拟加 · 补油 ∝ 累计爬升米</span></div>
         <svg id="stepfn" viewBox="0 0 720 330" style="width:100%;height:auto;display:block;margin-top:4px"></svg>
-        <p class="chart-note">以小挂为例：左，现行按线路<b>累计纯山路里程</b>，每满 50 km 补 +1 L/百公里（100 km 补 2 L，云贵川渝互跑翻倍）——不满一档不补、档内 105 与 149 km 同额、过线差 1 km 就跳一档；右，拟改按<b>每百公里累计爬升米</b>连续计量，<b>补油 = k × 爬升米</b>，丘陵与陡坡都按实际爬坡量补、还可乘载重系数。形式示意，k 由回归估计。</p>
+        <p class="chart-note">以小挂为例：左，现行按线路<b>累计纯山路里程</b>，每满 50 km 补 +1 L/百公里（100 km 补 2 L，云贵川渝互跑翻倍）——不满一档不补、档内 105 与 149 km 同额、过线差 1 km 就跳一档；右，拟加按<b>每百公里累计爬升米</b>连续计量，<b>补油 = k × 爬升米</b>，丘陵与陡坡都按实际爬坡量补、还可乘载重系数。形式示意，k 由回归估计。</p>
       </div>
       <div class="vc-col">
         <div class="vc old"><h3>现行：阶梯式</h3><ul>
@@ -337,7 +340,7 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
           <li><i>×</i><span><b>丘陵路段一分不补、河谷平路却照补</b>——补没补对与“是否被划进山路”强相关</span></li>
           <li><i>×</i>档内坡陡坡缓补贴一样，过线瞬间多补一档</li>
         </ul></div>
-        <div class="vc new"><h3>拟改：连续函数</h3><ul>
+        <div class="vc new"><h3>拟加：连续函数</h3><ul>
           <li><i>✓</i>补油 = k × 每百公里累计爬升米，k 由数据估计</li>
           <li><i>✓</i>爬坡多少直接决定补贴多少：丘陵补一点、平路不补、陡坡多补</li>
           <li><i>✓</i>每项 1 个起补点 + 1 个斜率，与新增因素共用一套方法</li>
@@ -409,7 +412,11 @@ function pdf(x,m,s){return Math.exp(-((x-m)*(x-m))/(2*s*s))}
   [-2,-1,0,1,2,3].forEach(t=>{el('line',{x1:x(t),y1:T,x2:x(t),y2:B,stroke:'#eeeae0','stroke-width':1},svg);
     const tx=el('text',{x:x(t),y:B+20,'text-anchor':'middle','font-size':11,fill:'#8a8494'},svg);tx.textContent=t});
   el('line',{x1:L,y1:B,x2:R,y2:B,stroke:'#c9c4b6','stroke-width':1.5},svg);
-  const zl=el('text',{x:x(0),y:B+34,'text-anchor':'middle','font-size':10.5,fill:'#8a8494'},svg);zl.textContent='0 = 不亏不节 · ＞0 节油 · ＜0 亏油（升/百公里）';
+  el('line',{x1:L,y1:T,x2:L,y2:B,stroke:'#c9c4b6','stroke-width':1.5},svg);
+  el('path',{d:`M${R} ${B} l-7 -3.5 v7 Z`,fill:'#c9c4b6'},svg);
+  el('path',{d:`M${L} ${T} l-3.5 7 h7 Z`,fill:'#c9c4b6'},svg);
+  const yl=el('text',{x:0,y:0,'text-anchor':'middle','font-size':10.5,'font-weight':800,fill:'#8a8494',transform:`rotate(-90 ${L-38} ${(T+B)/2})`},svg);yl.setAttribute('x',L-38);yl.setAttribute('y',(T+B)/2);yl.textContent='司机占比（密度）';
+  const zl=el('text',{x:(L+R)/2,y:B+34,'text-anchor':'middle','font-size':10.5,'font-weight':800,fill:'#8a8494'},svg);zl.textContent='月节亏油（升/百公里）· ＜0 亏油 ｜ 0 不亏不节 ｜ ＞0 节油';
   // P10-P90 bands
   el('path',{d:path(M0,S0,p10a,p90a)+`L${x(p90a)} ${B} L${x(p10a)} ${B} Z`,fill:'rgba(124,155,214,.30)'},svg);
   el('path',{d:path(M1,S1,p10b,p90b)+`L${x(p90b)} ${B} L${x(p10b)} ${B} Z`,fill:'rgba(79,196,154,.40)'},svg);
@@ -444,7 +451,7 @@ function pdf(x,m,s){return Math.exp(-((x-m)*(x-m))/(2*s*s))}
   const RED='#4e83bd',GRN='#1fae7f';
   // panel captions
   el('text',{x:(L1+R1)/2,y:T-12,'text-anchor':'middle','font-size':12.5,'font-weight':900,fill:RED},svg).textContent='现行 · 按累计纯山路里程阶梯补';
-  el('text',{x:(L2+R2)/2,y:T-12,'text-anchor':'middle','font-size':12.5,'font-weight':900,fill:GRN},svg).textContent='拟改 · 按累计爬升连续补';
+  el('text',{x:(L2+R2)/2,y:T-12,'text-anchor':'middle','font-size':12.5,'font-weight':900,fill:GRN},svg).textContent='拟加 · 按累计爬升连续补';
   // x grids
   [0,50,100,150,200,250].forEach(t=>{
     el('line',{x1:xa(t),y1:T,x2:xa(t),y2:B,stroke:'#eeeae0'},svg);
