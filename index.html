@@ -307,7 +307,7 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
       <div class="f"><div class="no">05</div><h3>新车磨合期</h3><p>前 3–6 个月油耗偏高、之后回落的“新车亏油”现象。</p><span class="src">车辆出厂月份 · 未考虑</span></div>
       <div class="f"><div class="no">06</div><h3>柴油标号</h3><p>冬季 −10 / −20 号柴油热值低 2–4%，叠加在低温之上。</p><span class="src">加油地区 + 月份 · 未考虑</span></div>
       <div class="f"><div class="no">07</div><h3>辅助驾驶</h3><p>数据显示更省油，标准应否相应调整。</p><span class="src">账单表已有标识 · 未考虑</span></div>
-      <div class="f hot"><div class="no">08</div><h3>累计爬升</h3><p>全程上坡高差之和（米）。主要补「山路」覆盖不到的平缓坡段——现行山路口径只计入落差大的路段，缓坡起伏漏补。</p><span class="src">导航路径 + 高程数据 · 拟新增</span></div>
+      <div class="f"><div class="no">08</div><h3>累计爬升</h3><p>全程上坡高差之和（米）。主要补「山路」覆盖不到的平缓坡段——现行山路口径只计入落差大的路段，缓坡起伏漏补。</p><span class="src">导航路径 + 高程数据 · 拟新增</span></div>
     </div>
 
     </div>
@@ -347,9 +347,9 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
         <div class="flow">
           <div class="fcard"><span class="fic">☰</span><div class="ft"><b>1</b>车-月分析宽表</div><p>真实油量只有月度账单，分析粒度定为 车 × 月。油量账单、批次明细、车辆主数据 + 外部气象 / 路网 / 高程，按 车辆 ID × 结算月 关联。</p><div class="fout">产出 · 可信车-月宽表</div></div>
           <div class="farrow">→</div>
-          <div class="fcard"><span class="fic">⚙</span><div class="ft"><b>2</b>多因素回归</div><p>以车-月<b>节亏油</b>（实际油耗 − 政策油量，升/百公里）为目标变量：结构因素 + 拟新增 8 因素放进同一模型，怠速、超速、均速等行为变量只作控制、不进补偿，分车型建模并加司机固定效应。某因素系数 &gt;0 = 现行规则下它让司机亏油、该补；≈0 = 已补到位；&lt;0 = 在送奖励。</p><div class="fout">产出 · 系数对照表 = 修订依据</div></div>
+          <div class="fcard"><span class="fic">⚙</span><div class="ft"><b>2</b>多因素回归</div><p>把每个「车-月」的节亏油（实际 − 政策油量）当结果，看是哪些因素把它推高或拉低：结构因素和拟新增 8 项一起进模型，怠速、超速等行为变量只作控制不进补偿，分车型估计。某因素系数为正 = 它让司机亏油、该补；≈0 = 已补够；为负 = 在送奖励。</p><div class="fout">产出 · 系数对照表 = 修订依据</div></div>
           <div class="farrow">→</div>
-          <div class="fcard"><span class="fic">↻</span><div class="ft"><b>3</b>规则仿真回放</div><p>规则参数化做成仿真器：先复现现行政策油量验证理解，再把候选参数放进去，重算近两年每车、每司机的月节亏油。</p><div class="fout">产出 · 新旧方案对照</div></div>
+          <div class="fcard"><span class="fic">↻</span><div class="ft"><b>3</b>规则仿真回放</div><p>规则参数化做成仿真器：先复现现行政策油量验证理解，再把候选参数放进去，重算近一年每车、每司机的月节亏油。</p><div class="fout">产出 · 新旧方案对照</div></div>
           <div class="farrow">→</div>
           <div class="fcard"><span class="fic">⚖</span><div class="ft"><b>4</b>方案比选</div><p>先筛均值达标且总预算在区间内的方案，再比离散度、组间差异与持续偏差；变动最大的名单人工核查，不拍脑袋。</p><div class="fout">产出 · 影响与取舍清单</div></div>
         </div>
@@ -366,7 +366,7 @@ footer{margin-top:56px;font-size:12px;background:#2c2a33;color:#c9c5d4;border-ra
       <div class="vbody">
         <div class="quad">
           <div class="qcard"><span class="fic g">▶</span><div><b>立即开展</b><p>数据对账与现行规则复现并行启动：先确认任务油量能否被明细复现、油量构成、燃气单位、状态口径可靠。</p></div></div>
-          <div class="qcard"><span class="fic g">✚</span><div><b>补充数据</b><p>油量账单表 202501–202610 全量（车×月）、批次明细同期全量（4 段 SQL 已有）、车辆主数据、规则映射、外部气象 / 路网 / 高程渠道。</p></div></div>
+          <div class="qcard"><span class="fic g">✚</span><div><b>补充数据</b><p>油量账单表近一年全量（车×月）、批次明细同期全量（4 段 SQL 已有）、车辆主数据、规则映射、外部气象 / 路网 / 高程渠道。</p></div></div>
           <div class="qcard"><span class="fic g">↻</span><div><b>仿真比选</b><p>以现行方案为基线，分别测试参数微调、连续函数与少量新增因素，列出公平性指标与预算差距。</p></div></div>
           <div class="qcard"><span class="fic g">⚑</span><div><b>需要管理决策</b><p>总预算目标（中位司机月节油水平）、新增因素取舍边界、连续函数起补点与封顶是否沿用、生效时间与过渡期安排。</p></div></div>
         </div>
